@@ -14,3 +14,13 @@ A few resources to get you started if this is your first Flutter project:
 For help getting started with Flutter, view our 
 [online documentation](https://flutter.io/docs), which offers tutorials, 
 samples, guidance on mobile development, and a full API reference.
+使用插件包括：
+dio: ^2.1.13 #网络请求库
+  flutter_swiper: ^1.1.6 #轮播库
+  flutter_screenutil: ^0.6.0 #屏幕适配库
+  url_launcher: ^5.1.2 #发送手机URL例如打电话，发送Email等   https://github.com/flutter/plugins/tree/master/packages/url_launcher
+  flutter_easyrefresh: ^2.0.4 #上下拉刷新控件
+  provide: ^1.0.2 #状态管理器
+  fluttertoast: ^3.1.2 #轻提示框
+  fluro: ^1.5.1 # https://github.com/theyakka/fluro 跳转路由框架
+  flutter_html: ^0.9.6 #显示HTML插件
