@@ -33,8 +33,8 @@ class _RightCategoryNavState extends State<RightCategoryNav> {
           child: ListView.builder(
             scrollDirection: Axis.horizontal,
             itemCount: childCategory.childCategoryList.length,
-            itemBuilder: (context,item){
-              return _rightInkWell(item,childCategory.childCategoryList[item]);
+            itemBuilder: (context,index){
+              return _rightInkWell(index,childCategory.childCategoryList[index]);
             },
           ),
         );

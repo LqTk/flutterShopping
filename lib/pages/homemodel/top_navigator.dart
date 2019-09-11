@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:provide/provide.dart';
+import 'package:shopping/provide/child_category.dart';
+import 'package:shopping/provide/currentIndex.dart';
 import 'package:shopping/router/application.dart';
 
 //顶部导航模块
@@ -11,7 +14,8 @@ class TopNavigator extends StatelessWidget {
   Widget _gridViewItemUi(BuildContext context,item){
     return InkWell(
       onTap: (){
-        Application.router.navigateTo(context, '/detail?id=${item['goodsId']}');
+        Provide.value<ChildCategory>(context).navCategory(navigatorList.indexOf(item),context);
+        Provide.value<CurrentIndexProvide>(context).changeCurrentIndex(1);
       },
       child: Column(
         children: <Widget>[

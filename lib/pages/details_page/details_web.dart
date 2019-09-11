@@ -9,20 +9,24 @@ class DetailsWeb extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var goodsDetails = Provide.value<DetailsInfoProvide>(context).goodsInfo.data.goodInfo.goodsDetail;
-    print('>>>>>>'+goodsDetails);
     return Provide<DetailsInfoProvide>(
       builder: (context,child,val){
         var isLeft = Provide.value<DetailsInfoProvide>(context).isLeft;
+        DetailsModel goodsInfo = Provide.value<DetailsInfoProvide>(context).goodsInfo;
+        List<GoodComments> goodComments = goodsInfo.data.goodComments;
+        AdvertesPicture advertesPicture = goodsInfo.data.advertesPicture;
         if(isLeft){
           return Container(
-            child: Html(
-              data: goodsDetails,
+            child: Column(
+              children: <Widget>[
+                Html(
+                  data: goodsDetails,
+                ),
+                Image.network(advertesPicture.pICTUREADDRESS,width: ScreenUtil().setWidth(750),)
+              ],
             ),
           );
         }else {
-          DetailsModel goodsInfo = Provide.value<DetailsInfoProvide>(context).goodsInfo;
-          List<GoodComments> goodComments = goodsInfo.data.goodComments;
-          AdvertesPicture advertesPicture = goodsInfo.data.advertesPicture;
           if (goodComments.length == 0) {
             return Container(
               child: Column(

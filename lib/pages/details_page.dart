@@ -6,6 +6,7 @@ import 'details_page/details_explain.dart';
 import 'details_page/details_top_area.dart';
 import 'details_page/details_tabbar.dart';
 import 'details_page/details_web.dart';
+import 'details_page/details_bottom.dart';
 
 class DetailPage extends StatelessWidget {
 
@@ -29,15 +30,24 @@ class DetailPage extends StatelessWidget {
         future: _getBackInfo(context),
         builder: (context,snapshot){
           if(snapshot.hasData){
-            return Container(
-              child: ListView(
-                children: <Widget>[
-                  DetailsTopArea(),
-                  DetalisExplain(),
-                  DetailsTabbar(),
-                  DetailsWeb()
-                ],
-              ),
+            return Stack(
+              children: <Widget>[
+                Container(
+                  child: ListView(
+                    children: <Widget>[
+                      DetailsTopArea(),
+                      DetalisExplain(),
+                      DetailsTabbar(),
+                      DetailsWeb()
+                    ],
+                  ),
+                ),
+                Positioned(
+                  bottom: 0,
+                  left: 0,
+                  child: DetailsBottom(),
+                )
+              ],
             );
           }else{
             return ProgressDialog().refreshDialog();

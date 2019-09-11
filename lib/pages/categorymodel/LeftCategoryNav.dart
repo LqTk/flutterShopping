@@ -20,7 +20,6 @@ class _LeftCategoryNavState extends State<LeftCategoryNav> {
   List list = [];
   var listIndex = 0;
 
-
   @override
   void initState() {
     _getCategory();
@@ -29,30 +28,35 @@ class _LeftCategoryNavState extends State<LeftCategoryNav> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: ScreenUtil().setWidth(180),
-      decoration: BoxDecoration(
-          border: Border(right: BorderSide(width: 1,color: Colors.black12))
-      ),
-      child: ListView.builder(
-        itemCount: list.length,
-        itemBuilder: (context, index){
-          return _leftInkWell(index);
-        },
-      ),
+    return Provide<ChildCategory>(
+      builder: (context,child,scope){
+        list = Provide.value<ChildCategory>(context).cateList;
+        return Container(
+          width: ScreenUtil().setWidth(180),
+          decoration: BoxDecoration(
+              border: Border(right: BorderSide(width: 1,color: Colors.black12))
+          ),
+          child: ListView.builder(
+            itemCount: list.length,
+            itemBuilder: (context, index){
+              return _leftInkWell(index);
+            },
+          ),
+        );
+      },
     );
+
+
   }
 
   Widget _leftInkWell(index){
     bool isClick = false;
+    listIndex = Provide.value<ChildCategory>(context).lastIndex;
     isClick = (index==listIndex)?true:false;
     return InkWell(
       onTap: (){
-        setState(() {
-          listIndex = index;
-        });
         var childList = list[index].bxMallSubDto;
-        Provide.value<ChildCategory>(context).setChildCategory(childList);
+        Provide.value<ChildCategory>(context).setChildCategory(childList,index);
         Provide.value<CategoryGoodsListProvide>(context).setCategoryGoodsList([]);
         _getGoodsList(list[index],context);
       },
@@ -96,11 +100,9 @@ class _LeftCategoryNavState extends State<LeftCategoryNav> {
     await requestPost('getCategory').then((val){
       var data = json.decode(val.toString());
       Category category = Category.fromJson(data);
-      setState(() {
-        list = category.data;
-      });
-      Provide.value<ChildCategory>(context).setChildCategory(list[0].bxMallSubDto);
-      _getGoodsList(list[0],context);
+      Provide.value<ChildCategory>(context).setCategoryDataList(category.data);
+      Provide.value<ChildCategory>(context).setChildCategory(Provide.value<ChildCategory>(context).cateList[0].bxMallSubDto,0);
+      _getGoodsList(Provide.value<ChildCategory>(context).cateList[0],context);
     });
   }
 }

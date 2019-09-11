@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:shopping/model/category.dart';
+import 'package:shopping/provide/child_category.dart';
 import '../service/service_method.dart';
 import 'package:shopping/pages/homemodel/swiper_page.dart';
 import 'dart:convert';
