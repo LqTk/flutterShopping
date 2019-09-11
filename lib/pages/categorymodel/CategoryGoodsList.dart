@@ -6,8 +6,10 @@ import 'package:shopping/model/categorygoodslist.dart';
 import 'package:shopping/provide/child_category.dart';
 import 'package:shopping/provide/child_category_goods_list.dart';
 import 'package:flutter_easyrefresh/easy_refresh.dart';
+import 'package:shopping/router/routers.dart';
 import 'package:shopping/service/service_method.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:shopping/router/application.dart';
 
 
 class CategoryGoodsList extends StatefulWidget {
@@ -102,7 +104,9 @@ class _CategoryGoodsListState extends State<CategoryGoodsList> {
   Widget _goodsListItem(newList,index){
     list = newList;
     return InkWell(
-        onTap: (){},
+        onTap: (){
+          Application.router.navigateTo(context, Routers.detailsPage+'?id=${list[index].goodsId}');
+        },
         child: Container(
           padding: EdgeInsets.only(top: 5.0,bottom: 5.0),
           decoration: BoxDecoration(

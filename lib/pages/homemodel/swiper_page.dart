@@ -20,8 +20,13 @@ class SwiperDiy extends StatelessWidget {
           return InkWell(
             onTap: (){
               if(isCanClick) {
-                Application.router.navigateTo(
-                    context, '/detail?id=${swiperDateList[index]['goodsId']}');
+                if(swiperDateList[index]['urlType']==0) {
+                  Application.router.navigateTo(
+                      context,
+                      '/detail?id=${swiperDateList[index]['goodsId']}');
+                }else if(swiperDateList[index]['urlType']==1){
+
+                }
               }
             },
             child: Image.network(swiperDateList[index]['image'],fit: BoxFit.fitWidth,width: ScreenUtil().setWidth(745),),

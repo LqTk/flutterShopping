@@ -64,7 +64,7 @@ class _HomePageState extends State<HomePage> with AutomaticKeepAliveClientMixin{
             return EasyRefresh(
               child: ListView(
                 children: <Widget>[
-                  SwiperDiy(swiperDateList: swiper,isCanClick: false,screenHeight: 333,),
+                  SwiperDiy(swiperDateList: swiper,isCanClick: true,screenHeight: 333,),
                   TopNavigator(navigatorList: navgatorList),
                   AdBanner(adPicture: adPicture),
                   LeaderPhone(leaderImage: leaderImage, leaderPhone: leaderPhone),
@@ -145,7 +145,7 @@ class _HomePageState extends State<HomePage> with AutomaticKeepAliveClientMixin{
           onTap: (){
             Provide
                 .value<DetailsInfoProvide>(context).setGoodsIndo();
-            print('路由跳转》》》》》');
+//            print('路由跳转》》》》》');
             Application.router.navigateTo(context, '/detail?id=${val['goodsId']}');
 
           },

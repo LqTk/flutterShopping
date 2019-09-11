@@ -75,7 +75,11 @@ class CartProvide with ChangeNotifier{
       cartList=[];
     }else{
       List<Map> tempList = (json.decode(cartString.toString()) as List).cast();
-      isAllCheck = true;
+      if(tempList.length==0) {
+        isAllCheck = false;
+      }else{
+        isAllCheck = true;
+      }
       tempList.forEach((item){
         cartList.add(CartInfoModel.fromJson(item));
         if(item['isCheck']) {
