@@ -24,3 +24,5 @@ provide: ^1.0.2 #状态管理器
 fluttertoast: ^3.1.2 #轻提示框
 fluro: ^1.5.1 # https://github.com/theyakka/fluro 跳转路由框架
 flutter_html: ^0.9.6 #显示HTML插件
+shared_preferences: ^0.5.3+4 #sharedpreference数据存储插件
+# https://javiercbk.github.io/json_to_dart/        json转换成dart类快速工具
