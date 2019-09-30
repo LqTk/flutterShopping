@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shopping/provide/member.dart';
 import './pages/index_page.dart';
 import './provide/counter.dart';
 import 'package:provide/provide.dart';
@@ -20,6 +21,7 @@ void main(){
   ..provide(Provider<CategoryGoodsListProvide>.value(CategoryGoodsListProvide()))
   ..provide(Provider<CartProvide>.value(CartProvide()))
   ..provide(Provider<CurrentIndexProvide>.value(CurrentIndexProvide()))
+  ..provide(Provider<MemberProvider>.value(MemberProvider()))
   ..provide(Provider<DetailsInfoProvide>.value(DetailsInfoProvide()));
   runApp(ProviderNode(child: MyApp(), providers: providers));
 }
