@@ -41,8 +41,8 @@ class _SettingPagesState extends State<SettingPages> {
               tiles: [
                 ListTile(
                   leading: ClipOval(
-                    child: loginInfo.data.picUrl.isEmpty ? Icon(CupertinoIcons.person_solid,color: Colors.black45,size: 30,) : Image.network('http://192.168.2.153:8080//HttpServletTest/' +loginInfo.data
-                        .picUrl,width: 30,height: 30,),
+                    child: loginInfo==null || loginInfo.data==null || loginInfo.data.picUrl.isEmpty ? Icon(CupertinoIcons.person_solid,color: Colors.black45,size: 30,) : Image.network('http://192.168.2.153:8080//HttpServletTest/ImageById?id=${loginInfo.data
+                        .userId}&picUrl=${loginInfo.data.picUrl}',width: 30.0,height: 30.0,),
                   ),
                   title: Text('修改头像'),
                   onTap: (){
@@ -52,7 +52,7 @@ class _SettingPagesState extends State<SettingPages> {
                 ListTile(
                   leading:Icon(Icons.person,size: 30,),
                   title: Text('修改昵称'),
-                  trailing: Text(loginInfo.data.name),
+                  trailing: Text(loginInfo==null || loginInfo.data==null?'':loginInfo.data.name),
                   onTap: (){
                     showDialog(
                         context: context,

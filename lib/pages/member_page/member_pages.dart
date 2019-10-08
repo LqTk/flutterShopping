@@ -39,8 +39,8 @@ class _MemberPagesState extends State<MemberPages> {
             }else {
               return Container(
                   child: _topHeader(context,
-                      loginInfo.data.picUrl.isEmpty ? "" :'http://192.168.2.153:8080//HttpServletTest/' +loginInfo.data
-                          .picUrl, loginInfo.data.name)
+                      loginInfo.data.picUrl.isEmpty ? "" :'http://192.168.2.153:8080//HttpServletTest/ImageById?id=${loginInfo.data
+                          .userId}&picUrl=${loginInfo.data.picUrl}', loginInfo.data.name)
               );
             }
           }
@@ -86,7 +86,7 @@ class _MemberPagesState extends State<MemberPages> {
       height: ScreenUtil().setHeight(330),
       padding: EdgeInsets.all(20),
       decoration: new BoxDecoration(
-          image: new DecorationImage(image: new NetworkImage('http://192.168.2.153:8080//HttpServletTest/bg/bg.jpg'),fit: BoxFit.fitWidth)
+          image: new DecorationImage(image: AssetImage('img/bg.jpg'),fit: BoxFit.fitWidth)
       ),
       child: Column(
         children: <Widget>[
