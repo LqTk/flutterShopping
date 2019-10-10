@@ -7,6 +7,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provide/provide.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:shopping/config/service_url.dart';
 import 'package:shopping/model/memberLoginInfo.dart';
 import 'package:shopping/model/userinfo.dart';
 import 'package:shopping/provide/member.dart';
@@ -39,8 +40,8 @@ class _MemberPagesState extends State<MemberPages> {
             }else {
               return Container(
                   child: _topHeader(context,
-                      loginInfo.data.picUrl.isEmpty ? "" :'http://192.168.2.153:8080//HttpServletTest/ImageById?id=${loginInfo.data
-                          .userId}&picUrl=${loginInfo.data.picUrl}', loginInfo.data.name)
+                      loginInfo.data.picUrl.isEmpty ? "" :myServicePath['headUrlPath']+"id=${loginInfo.data
+                          .userId}&picUrl=${loginInfo.data.picUrl}", loginInfo.data.name)
               );
             }
           }

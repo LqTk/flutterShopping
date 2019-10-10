@@ -7,6 +7,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:provide/provide.dart';
+import 'package:shopping/config/service_url.dart';
 import 'package:shopping/model/memberLoginInfo.dart';
 import 'package:shopping/progressbar/progress_dialog.dart';
 import 'package:shopping/provide/member.dart';
@@ -41,8 +42,8 @@ class _SettingPagesState extends State<SettingPages> {
               tiles: [
                 ListTile(
                   leading: ClipOval(
-                    child: loginInfo==null || loginInfo.data==null || loginInfo.data.picUrl.isEmpty ? Icon(CupertinoIcons.person_solid,color: Colors.black45,size: 30,) : Image.network('http://192.168.2.153:8080//HttpServletTest/ImageById?id=${loginInfo.data
-                        .userId}&picUrl=${loginInfo.data.picUrl}',width: 30.0,height: 30.0,),
+                    child: loginInfo==null || loginInfo.data==null || loginInfo.data.picUrl.isEmpty ? Icon(CupertinoIcons.person_solid,color: Colors.black45,size: 30,) : Image.network(myServicePath['headUrlPath']+"id=${loginInfo.data
+                        .userId}&picUrl=${loginInfo.data.picUrl}",width: 30.0,height: 30.0,),
                   ),
                   title: Text('修改头像'),
                   onTap: (){
@@ -176,7 +177,7 @@ class _SettingPagesState extends State<SettingPages> {
       "uploadFile": new UploadFileInfo(new File(path), name)
     });
     Dio dio = new Dio();
-    var respone = await dio.post<String>("http://192.168.2.153:8080//HttpServletTest/upLoadPic", data: formData);
+    var respone = await dio.post<String>(myServicePath['upLoadPicPath'], data: formData);
     if (respone.statusCode == 200) {
       Fluttertoast.showToast(
           msg: "头像上传成功",

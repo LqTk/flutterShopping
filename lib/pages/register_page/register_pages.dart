@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:provide/provide.dart';
+import 'package:shopping/config/service_url.dart';
 import 'package:shopping/model/memberLoginInfo.dart';
 import 'package:shopping/provide/member.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -96,7 +97,7 @@ class _RegisterPagesState extends State<RegisterPages> {
       'name': _nameController.text,
       'password': _passwordController.text
     };
-    response = await dio.post('http://192.168.2.153:8080//HttpServletTest/Register',data: formdata);
+    response = await dio.post(myServicePath['registerPath'],data: formdata);
     print(response.data.toString());
     var data = json.decode(response.data.toString());
     if(data['code']==0) {

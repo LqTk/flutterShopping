@@ -8,6 +8,7 @@ import 'dart:io';
 import 'package:dio/dio.dart';
 import 'package:provide/provide.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:shopping/config/service_url.dart';
 import 'package:shopping/model/memberLoginInfo.dart';
 import 'package:shopping/model/userinfo.dart';
 import 'package:shopping/provide/member.dart';
@@ -193,7 +194,7 @@ class Dialogs {
       'userId': temp['userId'],
       'nowPassWord':''
     };
-    var response = await dio.post('http://192.168.2.153:8080//HttpServletTest/ChangeName',data: formdata);
+    var response = await dio.post(myServicePath['changeNamePath'],data: formdata);
     var resultChange = json.decode(response.data.toString());
     if(resultChange['code']==0){
       MemberLoginInfo loginInfo=Provide.value<MemberProvider>(context).loginInfo;
@@ -248,7 +249,7 @@ class Dialogs {
         );
       });
       var response = await dio.post(
-          'http://192.168.2.153:8080//HttpServletTest/ChangeName',
+          myServicePath['changeNamePath'],
           data: formdata);
       var resultChange = json.decode(response.data.toString());
       if (resultChange['code'] == 0) {

@@ -6,3 +6,12 @@ const servicePath = {
   'getMallGoods':serviceUrl+'baixing/wxmini/getMallGoods',//商品分类的商品列表
   'getGoodDetailById':serviceUrl+'baixing/wxmini/getGoodDetailById',//商品详细信息
 };
+
+const myServiceUrl = 'http://192.168.2.153:8080/HttpServletTest/';
+const myServicePath = {
+  'loginPath':myServiceUrl+'Login',
+  'registerPath':myServiceUrl+'Register',
+  'headUrlPath':myServiceUrl+'ImageById?',
+  'upLoadPicPath':myServiceUrl+'upLoadPic',
+  'changeNamePath':myServiceUrl+'ChangeName',
+};

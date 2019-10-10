@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:io';
 
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
@@ -6,6 +7,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:provide/provide.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:shopping/config/service_url.dart';
 import 'package:shopping/model/memberLoginInfo.dart';
 import 'package:shopping/model/userinfo.dart';
 import 'package:shopping/provide/member.dart';
@@ -122,11 +124,12 @@ class _LoginPagesState extends State<LoginPages> {
   void _getInternet(context) async{
     Response response;
     Dio dio = new Dio();
+    dio.options.contentType=ContentType.json;
     var formdata = {
       'name': _nameController.text,
       'password': _passwordController.text
     };
-    response = await dio.post('http://192.168.2.153:8080//HttpServletTest/Login',data: formdata);
+    response = await dio.post(myServicePath['loginPath'],data: formdata);
     print(response.data.toString());
     var data = json.decode(response.data.toString());
     MemberLoginInfo loginInfo = MemberLoginInfo();
