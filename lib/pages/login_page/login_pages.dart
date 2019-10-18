@@ -18,12 +18,37 @@ import 'package:shopping/router/routers.dart';
 class LoginPages extends StatefulWidget {
   @override
   _LoginPagesState createState() => _LoginPagesState();
+
 }
 
 class _LoginPagesState extends State<LoginPages> {
 
   TextEditingController _nameController = new TextEditingController();
   TextEditingController _passwordController = new TextEditingController();
+
+  String name="";
+  String password="";
+
+  @override
+  // ignore: must_call_super
+  void initState() {
+    // TODO: implement initState
+    _getNameAndPassword();
+  }
+
+
+  _getNameAndPassword() async{
+    SharedPreferences preferences = await SharedPreferences.getInstance();
+    var userInfo = preferences.getString("UserInfo");
+    if(userInfo == null || userInfo.isEmpty){
+    }else {
+      var temp = json.decode(userInfo.toString());
+      name = temp['name'];
+      password = temp['password'];
+      _nameController.text=name;
+      _passwordController.text = password;
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -78,6 +103,7 @@ class _LoginPagesState extends State<LoginPages> {
           Icon(CupertinoIcons.padlock,size: 40,color: Colors.black26,),
           Expanded(
             child: new TextField(
+              obscureText: true,
               controller: _passwordController,
               decoration: new InputDecoration(
                   hintText: '请输入密码'
